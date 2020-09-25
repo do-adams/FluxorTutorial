@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Fluxor;
 
+using FluxorTutorial.Services;
+
 namespace FluxorTutorial
 {
     class Program
@@ -12,6 +14,7 @@ namespace FluxorTutorial
             services.AddScoped<App>();
             services.AddFluxor(o => o
                 .ScanAssemblies(typeof(Program).Assembly));
+            services.AddScoped<IWeatherForecastService, WeatherForecastService>();
 
             IServiceProvider serviceProvider = services.BuildServiceProvider();
 
