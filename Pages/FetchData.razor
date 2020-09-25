@@ -1,13 +1,12 @@
 ﻿@page "/fetchdata"
 
-@using FluxorTutorial.Data
-@inject WeatherForecastService ForecastService
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
 
 <h1>Weather forecast</h1>
 
 <p>This component demonstrates fetching data from a service.</p>
 
-@if (forecasts == null)
+@if (WeatherState.Value.IsLoading)
 {
     <p><em>Loading...</em></p>
 }
@@ -23,7 +22,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (var forecast in WeatherState.Value.Forecasts)
             {
                 <tr>
                     <td>@forecast.Date.ToShortDateString()</td>
@@ -36,11 +35,3 @@ else
     </table>
 }
 
-@code {
-    private WeatherForecast[] forecasts;
-
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-    }
-}
