@@ -1,27 +1,28 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
-using Fluxor;
-
-using FluxorTutorial.Services;
-using FluxorTutorial.Store.Middlewares.Logging;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace FluxorTutorial
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var services = new ServiceCollection();
-            services.AddScoped<App>();
-            services.AddFluxor(o => o
-                .ScanAssemblies(typeof(Program).Assembly)
-                .AddMiddleware<LoggingMiddleware>());
-            services.AddScoped<IWeatherForecastService, WeatherForecastService>();
-
-            IServiceProvider serviceProvider = services.BuildServiceProvider();
-
-            var app = serviceProvider.GetRequiredService<App>();
-            app.Run();
+            CreateHostBuilder(args).Build().Run();
         }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }
