@@ -27,30 +27,30 @@ namespace FluxorTutorial
 
         private void CounterState_StateChanged(object sender, CounterState e)
         {
-            Console.WriteLine("");
-            Console.WriteLine("==========================> CounterState");
-            Console.WriteLine("ClickCount is " + CounterState.Value.ClickCount);
-            Console.WriteLine("<========================== CounterState");
-            Console.WriteLine("");
+            // Console.WriteLine("");
+            // Console.WriteLine("==========================> CounterState");
+            // Console.WriteLine("ClickCount is " + CounterState.Value.ClickCount);
+            // Console.WriteLine("<========================== CounterState");
+            // Console.WriteLine("");
         }
 
         private void WeatherState_StateChanged(object sender, WeatherState e)
         {
-            Console.WriteLine("");
-            Console.WriteLine("=========================> WeatherState");
-            Console.WriteLine("IsLoading: " + WeatherState.Value.IsLoading);
-            if (!WeatherState.Value.Forecasts.Any())
-            {
-                Console.WriteLine("--- No weather forecasts");
-            }
-            else
-            {
-                Console.WriteLine("Temp C\tTemp F\tSummary");
-                foreach (WeatherForecast forecast in WeatherState.Value.Forecasts)
-                    Console.WriteLine($"{forecast.TemperatureC}\t{forecast.TemperatureF}\t{forecast.Summary}");
-            }
-            Console.WriteLine("<========================== WeatherState");
-            Console.WriteLine("");
+            // Console.WriteLine("");
+            // Console.WriteLine("=========================> WeatherState");
+            // Console.WriteLine("IsLoading: " + WeatherState.Value.IsLoading);
+            // if (!WeatherState.Value.Forecasts.Any())
+            // {
+            //     Console.WriteLine("--- No weather forecasts");
+            // }
+            // else
+            // {
+            //     Console.WriteLine("Temp C\tTemp F\tSummary");
+            //     foreach (WeatherForecast forecast in WeatherState.Value.Forecasts)
+            //         Console.WriteLine($"{forecast.TemperatureC}\t{forecast.TemperatureF}\t{forecast.Summary}");
+            // }
+            // Console.WriteLine("<========================== WeatherState");
+            // Console.WriteLine("");
         }
 
         public void Run()
